@@ -4,6 +4,17 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  arbiter_avail_loader_excel:
+    class: AppBundle\Action\Avail\AvailLoaderExcel
+
+  arbiter_avail_reporter_excel:
+    class: AppBundle\Action\Avail\AvailReporterExcel
+
+
+  arbiter_avail_action:
+    class: AppBundle\Action\Avail\AvailAction
+    calls: [[setContainer,['@service_container']]]
+    arguments:
+      - '@@Arbiter/Avail/AvailIndex.html.twig'
+      - '@arbiter_avail_loader_excel'
+      - '@arbiter_avail_reporter_excel'

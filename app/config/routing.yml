@@ -1,3 +1,9 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+arbiter_avail:
+    path:      /avail
+    defaults:
+      _controller: 'arbiter_avail_action'
+      _template:   '@Arbiter/Avail/AvailIndex.html.twig'
